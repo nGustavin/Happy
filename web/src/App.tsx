@@ -1,6 +1,8 @@
 import React from 'react';
+
 import './styles/global.css'
-import Landing from './pages/Landing'
+import 'leaflet/dist/leaflet.css'
+
 import Routes from './routes'
 
 function App() {
