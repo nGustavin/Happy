@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { FaWhatsapp } from "react-icons/fa";
+/* import { FaWhatsapp } from "react-icons/fa"; */
 import { FiClock, FiInfo } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
-import '../styles/pages/orphanage.css';
+import { useParams} from 'react-router-dom'
+
 import Sidebar from "../components/Sidebar";
 import mapIcon from '../utils/mapIcon'
 import api from "../services/api";
-import { useParams} from 'react-router-dom'
+
+import '../styles/pages/orphanage.css';
+
 
 
 interface Orphanage {
@@ -31,11 +34,12 @@ interface OrphanageParams{
 
 export default function Orphanage() {
 
- 
+
     const params = useParams<OrphanageParams>()
     const [orphanage, setOrphanage] = useState<Orphanage>()
+    const [ activeimagesIndex, setActiveimagesIndex] = useState(0)
 
- 
+
   
     useEffect(() => {
       api.get(`orphanages/${params.id}`).then(response => {
@@ -57,15 +61,22 @@ export default function Orphanage() {
      <Sidebar />
       <main>
         <div className="orphanage-details">
-          <img src={orphanage.images[0].url} alt={orphanage.name} />
+          <img src={orphanage.images[activeimagesIndex].url} alt={orphanage.name} />
 
           <div className="images">
 
           <div className="images">
-            {  orphanage.images.map(image =>{
+            { orphanage.images.map((images, index) =>{
               return(
-                <button key={image.id} className="active" type="button">
-                  <img src={image.url} alt={orphanage.name} />
+                <button
+                  key={images.id}
+                  className={activeimagesIndex === index ? 'active' : ''}
+                  type="button"
+                  onClick={() => {
+                    setActiveimagesIndex(index)
+                  }}  
+                >
+                  <img src={images.url} alt={orphanage.name} />
                 </button>
               )
             })}
@@ -97,7 +108,7 @@ export default function Orphanage() {
               </Map>
 
               <footer>
-                <a href="">Ver rotas no Google Maps</a>
+                <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir?/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}>Ver rotas no Google Maps</a>
               </footer>
             </div>
 

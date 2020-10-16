@@ -7995,9 +7995,9 @@ postcss-gap-properties@^2.0.0:
   dependencies:
     postcss "^7.0.2"
 
-postcss-image-set-function@^3.0.1:
+postcss-images-set-function@^3.0.1:
   version "3.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-image-set-function/-/postcss-image-set-function-3.0.1.tgz#28920a2f29945bed4c3198d7df6496d410d3f288"
+  resolved "https://registry.yarnpkg.com/postcss-images-set-function/-/postcss-images-set-function-3.0.1.tgz#28920a2f29945bed4c3198d7df6496d410d3f288"
   integrity sha512-oPTcFFip5LZy8Y/whto91L9xdRHCWEMs3e1MdJxhgt4jy2WYXfhkng59fH5qLXSCPN8k4n94p1Czrfe5IOkKUw==
   dependencies:
     postcss "^7.0.2"
@@ -8306,7 +8306,7 @@ postcss-preset-env@6.7.0:
     postcss-focus-within "^3.0.0"
     postcss-font-variant "^4.0.0"
     postcss-gap-properties "^2.0.0"
-    postcss-image-set-function "^3.0.1"
+    postcss-images-set-function "^3.0.1"
     postcss-initial "^3.0.0"
     postcss-lab-function "^2.0.1"
     postcss-logical "^3.0.0"

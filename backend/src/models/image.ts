@@ -3,7 +3,7 @@ import Orphanage from './orphanage'
 
 @Entity('images')
 
-export default class Image { 
+export default class Images { 
   @PrimaryGeneratedColumn('increment')
   id: number;
   

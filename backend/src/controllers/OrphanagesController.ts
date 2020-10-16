@@ -22,11 +22,11 @@ export default {
 
     const orphanagesRepository = getRepository(Orphanage)
 
-    const orphanage = await orphanagesRepository.findOneOrFail(id, {
+    const orphanages = await orphanagesRepository.findOneOrFail(id, {
       relations: ['images']
     })
 
-    return response.json(orphanageView.render(orphanage))
+    return response.json(orphanageView.render(orphanages))
 
   },
 
@@ -40,6 +40,7 @@ export default {
       instructions,
       opening_hours,
       open_on_weekends,
+      
     
     } = request.body;
   
@@ -47,8 +48,8 @@ export default {
 
     const requestImages = request.files as Express.Multer.File[]
 
-    const images = requestImages.map(image => {
-      return{path: image.filename }
+    const images = requestImages.map(images => {
+      return{path: images.filename }
     })
 
     const data = {
